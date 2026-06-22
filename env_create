@@ -1,0 +1,63 @@
+
+步骤1：确认当前Python版本
+python --version
+
+步骤2：重新创建环境（指定Python 3.10）
+先退出当前环境
+deactivate
+删除旧环境
+rmdir /s /q sh_env
+重新创建，指定 Python 3.10（https://www.python.org/downloads/release/python-31011/）
+python3.10 -m venv sh_env
+
+步骤3：如果系统没有 Python 3.10
+查看系统所有 Python 版本
+where python
+where python3
+如果安装了 3.10，用完整路径创建环境
+C:\Users\xxx\AppData\Local\Programs\Python\Python310\python.exe -m venv sh_env
+
+步骤4：激活新环境并安装
+激活
+sh_env\Scripts\activate
+升级 pip
+python -m pip install --upgrade pip
+# 安装 PyTorch 2.3（官方源，CUDA 12.1）
+pip install torch==2.3.0 torchvision==0.18.0 --index-url https://download.pytorch.org/whl/cu121
+
+# 安装其他包（用清华镜像）
+Pip install ultralytics==8.3.0 opencv-python==4.10.0.84 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+pip install paddlepaddle-gpu==2.6.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install paddleocr==2.9.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+pip install ollama==0.3.0 fastapi==0.115.0 uvicorn==0.32.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+pip install numpy==1.26.4 pandas==2.2.2 pillow==10.4.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+pip install requests==2.32.3 beautifulsoup4==4.12.3 lxml==5.3.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+pip install tqdm==4.66.5 matplotlib==3.9.2 -i https://pypi.tuna.tsinghua.edu.cn/simple
+//如果清华被限制
+激活环境
+sh_env\Scripts\activate
+
+1. PyTorch（官方源，这个没问题）
+pip install torch==2.3.0 torchvision==0.18.0 --index-url https://download.pytorch.org/whl/cu121
+
+2. ultralytics（换阿里云源）
+pip install ultralytics==8.3.0 -i https://mirrors.aliyun.com/pypi/simple/
+
+3. OpenCV（换阿里云源）
+pip install opencv-python==4.10.0.84 -i https://mirrors.aliyun.com/pypi/simple/
+
+4. PaddleOCR（换阿里云源）
+pip install paddlepaddle-gpu==2.6.1 -i https://mirrors.aliyun.com/pypi/simple/
+pip install paddleocr==2.9.1 -i https://mirrors.aliyun.com/pypi/simple/
+
+5. 其他包（换阿里云源）
+pip install ollama==0.3.0 fastapi==0.115.0 uvicorn==0.32.0 numpy==1.26.4 pandas==2.2.2 pillow==10.4.0 requests==2.32.3 beautifulsoup4==4.12.3 lxml==5.3.0 tqdm==4.66.5 matplotlib==3.9.2 -i https://mirrors.aliyun.com/pypi/simple/
+
+步骤5：验证版本
+python -c "import torch; print('PyTorch:', torch.__version__)"
+python -c "import sys; print('Python:', sys.version)"
