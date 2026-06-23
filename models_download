@@ -18,6 +18,7 @@ CLS_MODEL_DIR = os.path.join(PADDLEOCR_MODEL_DIR, "ch_ppocr_mobile_v2.0_cls_infe
 # ========== YOLO 模型加载 ==========
 model_det = YOLO(os.path.join(YOLO_MODEL_DIR, "yolo11n.pt"))
 model_pose = YOLO(os.path.join(YOLO_MODEL_DIR, "yolo11n-pose.pt"))
+model_seg = YOLO(os.path.join(YOLO_MODEL_DIR, "yolo11n-seg.pt"))
 
 # ========== PaddleOCR 模型加载 ==========
 model_ocr = PaddleOCR(
